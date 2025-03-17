@@ -1,8 +1,1 @@
 # ChatAppPrivate
-# Add room chat features
-# Add eslint for the backend
-# Add stagger file for the backend
-# Add tests for the frontend
-# Add tests for the backend
-# Add RichText formatting feature
-# Add Reply message feature
