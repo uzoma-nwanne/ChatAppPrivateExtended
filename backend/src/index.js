@@ -16,7 +16,7 @@ dotenv.config();
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));//increase limit to avoid pYload size error when uploading files
 app.use(cookieParser());
 app.use(
   cors({
