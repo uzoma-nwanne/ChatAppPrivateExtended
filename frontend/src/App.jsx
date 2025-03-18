@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./components/NavBar";
+import NavBar from "./components/NavBar";
 
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
@@ -36,8 +36,7 @@ const App = () => {
 
   return (
     <div data-theme={theme}>
-      <NavBar />
-
+      <NavBar/>B
       <Routes>
         <Route
           path="/"
