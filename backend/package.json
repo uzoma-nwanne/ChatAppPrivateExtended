@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "prepare": "husky"
+    "prepare": "husky && husky install"
   },
   "keywords": [],
   "author": "",
@@ -30,17 +30,13 @@
     "@eslint/js": "^9.23.0",
     "eslint": "^9.23.0",
     "globals": "^16.0.0",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "lint-staged": "^15.5.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3"
   },
   "lint-staged": {
-    "*.js": "cd .. && husky backend/.husky eslint --fix "
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "src/**/*.{js,css,html}": "prettier --write",
+    "src/**/*.js": "eslint --fix"
   }
 }
