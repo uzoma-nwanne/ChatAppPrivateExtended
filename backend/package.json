@@ -36,7 +36,7 @@
     "prettier": "^3.5.3"
   },
   "lint-staged": {
-    "*.js": "cd .. && husky backend/.husky && eslint --fix prettier --write"
+    "*.js": "cd .. && husky backend/.husky eslint --fix prettier --write"
   },
   "husky": {
     "hooks": {
