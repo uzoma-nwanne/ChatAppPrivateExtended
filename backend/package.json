@@ -40,7 +40,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "exit 1"
+      "pre-commit": "lint-staged"
     }
   }
 }
