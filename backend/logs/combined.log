@@ -1,0 +1,8 @@
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mTesting logging\u001b[39m","timestamp":"2025-04-08 06:26:37.962 AM"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mTesting logging\u001b[39m","timestamp":"2025-04-08 06:26:47.904 AM"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mTesting logging\u001b[39m","timestamp":"2025-04-08 06:34:21.879 AM"}
+{"level":"info","message":"Testing logging","timestamp":"2025-04-08 03:52:48.319 PM"}
+{"level":"info","message":"Testing logging","timestamp":"2025-04-08 03:54:11.099 PM"}
+{"level":"info","message":"Testing logging","timestamp":"2025-04-08 03:55:01.493 PM"}
+{"level":"info","message":"App started","timestamp":"2025-04-08 03:55:57.598 PM"}
+{"level":"http","message":"GET /avatar.png 304 - - 12.159 ms","timestamp":"2025-04-08 10:48:47.202 PM"}
