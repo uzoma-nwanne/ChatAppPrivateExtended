@@ -2,27 +2,38 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-
+import morgan from "morgan";
 import path from "path";
 
-import { connectDB } from "./lib/db.js";
+import {connectDB} from "./lib/db.js";
+import {logger} from "./lib/logger.js";
 
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
-import { app, server } from "./lib/socket.js";
+import {app, server} from "./lib/socket.js";
 
-dotenv.config();
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
-app.use(express.json({ limit: '50mb' }));//increase limit to avoid pYload size error when uploading files
+const morganMiddleware = morgan(":method :url :status :res[content-length] - :response-time ms", {
+  stream: {
+    // Configure Morgan to use our custom logger with the http severity
+    write: (message) => logger.http(message.trim()),
+  },
+});
+app.use(morganMiddleware);
+
+app.use(express.json({limit: "50mb"})); //increase limit to avoid pYload size error when uploading files
 app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
-  })
+  }),
 );
 
 app.use("/api/auth", authRoutes);
