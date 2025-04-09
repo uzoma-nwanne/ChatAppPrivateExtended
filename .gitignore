@@ -6,4 +6,4 @@
 /frontend/dist
 /backend/.env.development
 /backend/.env.production
-/backend/.env.test
+/backend/.env.test  
