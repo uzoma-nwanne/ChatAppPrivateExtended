@@ -2,10 +2,21 @@ import { useEffect, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
 import { useAuthStore } from "../store/useAuthStore";
 import SidebarSkeleton from "./skeletons/SidebarSkeleton";
-import { Users } from "lucide-react";
+import { Users, Group } from "lucide-react";
 
 const SideBar = () => {
-  const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
+  const {
+    getUsers,
+    users,
+    selectedUser,
+    setSelectedUser,
+    isUsersLoading,
+    rooms,
+    getRooms,
+    selectedRoom,
+    setSelectedRoom,
+    isRoomLoading,
+  } = useChatStore();
 
   const { onlineUsers } = useAuthStore();
 
@@ -13,13 +24,15 @@ const SideBar = () => {
 
   useEffect(() => {
     getUsers();
-  }, [getUsers]);
+    getRooms();
+  }, [getUsers, getRooms]);
 
   const filteredUsers = showOnlineOnly
     ? users.filter((user) => onlineUsers.includes(user._id))
     : users;
 
-  if (isUsersLoading) return <SidebarSkeleton />;
+
+  if (isUsersLoading || isRoomLoading) return <SidebarSkeleton />;
 
   return (
     <aside className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
@@ -39,7 +52,9 @@ const SideBar = () => {
             />
             <span className="text-sm">Show online only</span>
           </label>
-          <span className="text-xs text-zinc-500">({onlineUsers.length - 1} online)</span>
+          <span className="text-xs text-zinc-500">
+            ({onlineUsers.length - 1} online)
+          </span>
         </div>
       </div>
 
@@ -51,13 +66,17 @@ const SideBar = () => {
             className={`
               w-full p-3 flex items-center gap-3
               hover:bg-base-300 transition-colors
-              ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}
+              ${
+                selectedUser?._id === user._id
+                  ? "bg-base-300 ring-1 ring-base-300"
+                  : ""
+              }
             `}
           >
             <div className="relative mx-auto lg:mx-0">
               <img
                 src={user.profilePic || "/avatar.png"}
-                alt={user.name}
+                alt={user.fullName}
                 className="size-12 object-cover rounded-full"
               />
               {onlineUsers.includes(user._id) && (
@@ -80,6 +99,54 @@ const SideBar = () => {
 
         {filteredUsers.length === 0 && (
           <div className="text-center text-zinc-500 py-4">No online users</div>
+        )}
+      </div>
+
+      {/* Show Rooms */}
+      <div className="border-b border-base-300 w-full p-5">
+        <div className="flex items-center gap-2">
+          <Group className="size-6" />
+          <span className="font-medium hidden lg:block">Rooms</span>
+        </div>
+      </div>
+      {/* Loop through User Rooms */}
+      <div className="overflow-y-auto w-full py-3">
+        {rooms.map((room) => (
+          <button
+            key={room._id}
+            onClick={() => setSelectedRoom(room)}
+            className={`
+              w-full p-3 flex items-center gap-3
+              hover:bg-base-300 transition-colors
+              ${
+                selectedRoom?._id === room._id
+                  ? "bg-base-300 ring-1 ring-base-300"
+                  : ""
+              }
+            `}
+          >
+            <div className="relative mx-auto lg:mx-0">
+              <img
+                src={room.profilePic || "/avatar.png"}
+                alt={room.name}
+                className="size-12 object-cover rounded-full"
+              />
+             
+            </div>
+
+            {/* User info - only visible on larger screens 
+            Edit here to show number of messages*/}
+            <div className="hidden lg:block text-left min-w-0">
+              <div className="font-medium truncate">{room.name}</div>
+              <div className="text-sm text-zinc-400">
+                {onlineUsers.includes(room._id) ? "Online" : "Offline"}
+              </div>
+            </div>
+          </button>
+        ))}
+
+        {rooms.length === 0 && (
+          <div className="text-center text-zinc-500 py-4">No rooms</div>
         )}
       </div>
     </aside>

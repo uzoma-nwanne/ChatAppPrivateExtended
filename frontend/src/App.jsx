@@ -14,6 +14,7 @@ import { useEffect } from "react";
 
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
+import CreateGroup from "./pages/CreateGroup";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
@@ -25,8 +26,6 @@ const App = () => {
     checkAuth();
   }, [checkAuth]);
 
-  console.log({ authUser });
-
   if (isCheckingAuth && !authUser)
     return (
       <div className="flex items-center justify-center h-screen">
@@ -36,7 +35,7 @@ const App = () => {
 
   return (
     <div data-theme={theme}>
-      <NavBar/>B
+      <NavBar/>
       <Routes>
         <Route
           path="/"
@@ -55,6 +54,7 @@ const App = () => {
           path="/profile"
           element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
         />
+          <Route path="/group" element={<CreateGroup />} />
       </Routes>
 
       <Toaster />

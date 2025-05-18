@@ -4,8 +4,9 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "cross-env NODE_ENV=test echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test jest --watchAll --runInBand --detectOpenHandles --testTimeout=300000 --coverage",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "db:seed": "cross-env NODE_ENV=development node src/seeds/user.seed.js",
     "start": "cross-env NODE_ENV=production node src/index.js",
     "prepare": "husky && husky install"
   },
@@ -30,10 +31,15 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
     "@eslint/js": "^9.23.0",
+    "babel-jest": "^29.7.0",
+    "babel-plugin-transform-import-meta": "^2.3.2",
     "eslint": "^9.23.0",
     "globals": "^16.0.0",
     "husky": "^8.0.0",
+    "jest": "^29.7.0",
     "lint-staged": "^15.5.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3"

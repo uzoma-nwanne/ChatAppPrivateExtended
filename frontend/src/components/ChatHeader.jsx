@@ -32,6 +32,6 @@ const ChatHeader = () => {
         </button>
       </div>
     </div>
-  );
+  )
 };
 export default ChatHeader;
