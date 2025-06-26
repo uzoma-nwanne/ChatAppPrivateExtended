@@ -148,3 +148,13 @@
 {"level":"error","message":"Error in adding new User: undefined to Room: Room.findOne({ _id: '6814e3a7c49d95c5fea655e1' })","timestamp":"2025-05-13 09:03:26.585 PM"}
 {"level":"error","message":"Error in adding new User: undefined to Room: undefined","timestamp":"2025-05-13 09:11:00.617 PM"}
 {"level":"error","message":"Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.ua95yiq.mongodb.net on DB connection","timestamp":"2025-05-15 10:53:49.697 AM"}
+{"level":"error","message":"Error: Server selection timed out after 30000 ms on DB connection","timestamp":"2025-06-22 08:43:10.249 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user diamondshq_ukpe@gmail.com on login","timestamp":"2025-06-22 09:52:51.130 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user diamondshq_ukpe@gmail.com on login","timestamp":"2025-06-22 09:53:03.943 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user diamondshq_ukpe@gmail.com on login","timestamp":"2025-06-22 09:53:30.254 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user diamondshq_ukpe@gmail.com on login","timestamp":"2025-06-22 09:54:13.352 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user johndoe@gmail.com on login","timestamp":"2025-06-22 09:54:26.470 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user diamondshq_ukpe@gmail.com on login","timestamp":"2025-06-22 09:55:16.529 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user uzo@gmail.com on signup","timestamp":"2025-06-22 09:55:49.025 PM"}
+{"level":"error","message":"Error: Operation `users.findOne()` buffering timed out after 10000ms for user uzo@gmail.com on signup","timestamp":"2025-06-22 09:56:04.422 PM"}
+{"level":"error","message":"Error: read ECONNRESET for user diamondshq_ukpe@gmail.com on login","timestamp":"2025-06-25 03:45:29.930 AM"}

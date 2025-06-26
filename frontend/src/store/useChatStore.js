@@ -13,6 +13,7 @@ export const useChatStore = create((set, get) => ({
   selectedRoom: null,
   isRoomsLoading: null,
   isCreatingRoom: false,
+  viewSettings: false,
 
   createRoom: async (data) => {
     set({ isCreatingRoom: true });
@@ -100,7 +101,9 @@ export const useChatStore = create((set, get) => ({
     socket.off("newMessage");
   },
 
-  setSelectedUser: (selectedUser) => set({ selectedUser, selectedRoom: null }),
+  setSelectedUser: (selectedUser) => set({ selectedUser, selectedRoom: null, viewSettings:false }),
 
-  setSelectedRoom: (selectedRoom) => set({ selectedRoom, selectedUser: null }),
+  setSelectedRoom: (selectedRoom) => set({ selectedRoom, selectedUser: null , viewSettings:false}),
+
+  setViewSettings: (value) => set({ viewSettings: !value}),
 }));

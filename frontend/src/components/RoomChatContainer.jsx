@@ -1,6 +1,5 @@
 import { useChatStore } from "../store/useChatStore";
 import { useEffect, useRef } from "react";
-
 import RoomChatHeader from "./RoomChatHeader";
 import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skeletons/MessageSkeleton";
@@ -25,7 +24,12 @@ const RoomChatContainer = () => {
     subscribeToMessages();
 
     return () => unsubscribeFromMessages();
-  }, [selectedRoom._id, getMessages, subscribeToMessages, unsubscribeFromMessages]);
+  }, [
+    selectedRoom._id,
+    getMessages,
+    subscribeToMessages,
+    unsubscribeFromMessages,
+  ]);
 
   useEffect(() => {
     if (messageEndRef.current && messages) {
@@ -37,8 +41,8 @@ const RoomChatContainer = () => {
     return (
       <div className="flex-1 flex flex-col overflow-auto">
         <RoomChatHeader />
-         <MessageSkeleton />
-        <MessageInput /> 
+        <MessageSkeleton />
+        <MessageInput />
       </div>
     );
   }
@@ -46,12 +50,13 @@ const RoomChatContainer = () => {
   return (
     <div className="flex-1 flex flex-col overflow-auto">
       <RoomChatHeader />
-
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
           <div
             key={message._id}
-            className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}
+            className={`chat ${
+              message.senderId === authUser._id ? "chat-end" : "chat-start"
+            }`}
             ref={messageEndRef}
           >
             <div className=" chat-image avatar">
