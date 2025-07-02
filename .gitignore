@@ -8,3 +8,4 @@
 /backend/.env.production
 /backend/.env.test  
 /backend/src/config
+/.husky
