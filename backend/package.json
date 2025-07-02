@@ -7,8 +7,7 @@
     "test": "cross-env NODE_ENV=test jest --watchAll --runInBand --detectOpenHandles --testTimeout=300000 --coverage",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "db:seed": "cross-env NODE_ENV=development node src/seeds/user.seed.js",
-    "start": "cross-env NODE_ENV=production node src/index.js",
-    "prepare": "husky && husky install"
+    "start": "cross-env NODE_ENV=production node src/index.js"
   },
   "keywords": [],
   "author": "",
